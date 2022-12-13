@@ -175,6 +175,8 @@ app.get('/info',router,(req,res)=>{
 
 app.get('/randoms',router,(req,res)=>{
 
+    res.send().status(200);
+
 })
 
 const options ={
@@ -195,6 +197,7 @@ const options ={
 // const {modo,port,debug,_} = ParseArgs(argv,options)
 
 
+
 // ------------------------------------------------------------------------------
 //  LISTEN SERVER
 // ------------------------------------------------------------------------------
@@ -210,17 +213,3 @@ controllersdb.conectarDB(process.env.URL_BASE_DE_DATOS, err => {
         console.log(`Server running on port 8080`);
     });
 });
-
-
-// sin usar env
-// controllersdb.conectarDB(config.URL_BASE_DE_DATOS, err => {
-
-//     if (err) return console.log('error en conexión de base de datos', err);
-//     console.log('BASE DE DATOS CONECTADA');
-
-//     app.listen(PORT, (err) => {
-//         if (err) return console.log('error en listen server', err);
-//         console.log(`Server running on port 8080`);
-//     });
-// });
-

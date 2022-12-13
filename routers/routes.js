@@ -1,3 +1,6 @@
+const { dirname } = require('path');
+const appDir = dirname(require.main.filename)
+
 function getRoot(req, res) {
     res.send('Bienvenido');
 }
@@ -15,25 +18,25 @@ function getLogin(req, res) {
         });
     }
     else {
-        res.sendFile(__dirname + '/views/login.html');
+        res.sendFile(`${ appDir }/views/login.html`);
     }
 }
 
 function getSignUp(req, res) {
-    res.sendFile(__dirname + '/views/signup.html');
+    res.sendFile(`${ appDir }/views/signup.html`);
 }
 
 
 function postLogin(req, res) {
     const user = req.user;
     console.log(user);
-    res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(`${ appDir }/views/index.html`);
 }
 
 function postSignup(req, res) {
     const user = req.user;
     console.log(user);
-    res.sendFile(__dirname + '/views/index.html');
+    res.sendFile(`${ appDir }/views/index.html`);
 }
 
 function getFailLogin(req, res) {
@@ -53,7 +56,7 @@ function getFailsignup(req, res) {
 function getLogout(req, res) {
     req.logout((err) => {
         if (err) { return next(err); }
-        res.sendFile(__dirname + '/views/index.html');
+        res.sendFile(`${ appDir }/views/index.html`);
     });
 }
 

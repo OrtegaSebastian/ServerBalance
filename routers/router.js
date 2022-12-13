@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
-const cpu = require ('os')
+const cpu = require ('os');
+const {fork} = require('child_process');
 
 
 router.get('/info', async (req, res) => {
@@ -25,10 +26,11 @@ router.get('/randoms',(req,res)=>{
     }else{
         cantEnviada = 100000000
     }
-    forked.on('message',(randoms)=>{
+
+    fork.on('message',(randoms)=>{
         res.send({'Números Random': randoms})
     })
-    forked.send(cantEnviada)
+    fork.send(cantEnviada)
 })
 
 module.exports = router;
